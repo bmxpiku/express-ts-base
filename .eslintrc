@@ -1,0 +1,63 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "no-console": 0,
+    "prefer-destructuring": ["error", {"object": true, "array": true}],
+    "camelcase": 0,
+    "object-curly-spacing": 1,
+    "operator-linebreak": ["error", "before", { "overrides": { "=": "after" } }],
+    "@typescript-eslint/camelcase": 0,
+    "import/prefer-default-export": "off", // Allow single Named-export
+    "no-unused-expressions": ["warn", {
+      "allowShortCircuit": true,
+      "allowTernary": true
+    }], // https://eslint.org/docs/rules/no-unused-expressions
+    "@typescript-eslint/prefer-interface": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "global-require": 0,
+    "@typescript-eslint/ban-ts-comment": 0
+  },
+  "overrides": [
+    {
+      "files": [ "*.test.ts" ],
+      "rules": {
+        "@typescript-eslint/no-use-before-define": 0,
+        "max-len": ["error", {"code":  120}],
+        "no-multi-assign": 0,
+        "operator-linebreak": 0,
+        "no-unused-expressions": 0
+      }
+    }
+  ],
+  "settings": {
+    "react": {
+      "version": "latest"
+    },
+    "import/extensions": [".ts",".tsx"],
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts",".tsx"]
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js",".jsx",".ts",".tsx"]
+      }
+    }
+  },
+  "env": {
+    "commonjs": true,
+    "node": true,
+    "jest": true,
+    "es6": true
+  }
+}
