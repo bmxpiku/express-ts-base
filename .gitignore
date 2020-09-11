@@ -40,9 +40,6 @@ typings/
 docker-compose.override.yml
 Dockerfile.dev
 
-*.map
-*.js
-
 !jest.*.js
 !tests/jest.*.setup.js
 
