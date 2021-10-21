@@ -1,0 +1,12 @@
+FROM node:lts-alpine
+
+RUN apk update && apk upgrade && \
+    apk add --no-cache python make g++ libexecinfo-dev
+WORKDIR /code
+ARG NPM_TOKEN
+ENV NPM_TOKEN=$NPM_TOKEN
+COPY . .
+ENV NODE_ENV testing
+RUN npm ci && npm run build
+
+CMD ["npm", "run", "qc"]

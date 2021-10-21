@@ -1,5 +1,3 @@
-# Created by .ignore support plugin (hsz.mobi)
-### Node template
 # Logs
 logs
 *.log
@@ -8,16 +6,14 @@ npm-debug.log*
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
-
-# Compiled binary addons (https://nodejs.org/api/addons.html)
-build/Release
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
 
 # Dependency directories
 node_modules/
-jspm_packages/
-
-# TypeScript v1 declaration files
-typings/
 
 # TypeScript cache
 *.tsbuildinfo
@@ -28,20 +24,12 @@ typings/
 # Optional eslint cache
 .eslintcache
 
-# Output of 'npm pack'
-*.tgz
-
 # dotenv environment variables file
 .env
 .env.test
 
-# custom
-.idea
-docker-compose.override.yml
-Dockerfile.dev
+# parcel-bundler cache (https://parceljs.org/)
+.cache
 
-!jest.*.js
-!tests/jest.*.setup.js
-
-coverage
 dist
+.idea

@@ -2,9 +2,11 @@
   "compilerOptions": {
     "baseUrl": "./",
     "emitDecoratorMetadata": true,
-    "lib": ["es6"],
+    "lib": ["es2020"],
     "esModuleInterop": true,
     "experimentalDecorators": true,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
     "resolveJsonModule": true,
     "importHelpers": true,
     "module": "commonjs",
@@ -15,31 +17,17 @@
     "target": "es6",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "strictNullChecks": false,
     "paths": {
-      "@daos/*": [
-        "src/daos/*"
+      "@src/*": [
+        "src/*"
       ],
-      "@entities/*": [
-        "src/entities/*"
-      ],
-      "@shared/*": [
-        "src/shared/*"
-      ],
-      "@server": [
-        "src/Server"
-      ]
-    },
-    "types": [
-      "node"
-    ],
-    "typeRoots": [
-      "node_modules/@types"
-    ]
+    }
   },
   "include": [
     "src/**/*.ts",
-    "spec/**/*.ts"
+    "tests/**/*.ts",
+    "jest.setup.ts",
+    "__mocks__"
   ],
   "exclude": [
     "src/public/"

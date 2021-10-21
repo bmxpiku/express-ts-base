@@ -4,8 +4,10 @@
     "sourceMap": false
   },
   "exclude": [
-    "spec",
+    "tests",
     "src/**/*.mock.ts",
-    "src/public/"
+    "src/public/",
+    "jest.setup.ts",
+    "__mocks__"
   ]
 }

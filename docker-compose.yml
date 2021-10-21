@@ -1,0 +1,42 @@
+version: "3.7"
+services:
+  swagger-editor:
+    image: swaggerapi/swagger-editor
+    container_name: "template_swagger-editor"
+    ports:
+      - "8081:8080"
+
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    container_name: "template_swagger-ui"
+    ports:
+      - "8082:8080"
+    volumes:
+      - ./docs:/docs
+    environment:
+      SWAGGER_JSON: /docs/openapi.yaml
+
+  template_service:
+    container_name: "template_service"
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+    volumes:
+      - .:/server
+    ports:
+      - 3000:3000
+    tty: true
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: 'mongo:3.6-xenial'
+    container_name: "template_mongodb"
+    ports:
+      - 27017:27017
+    volumes:
+      - db_data:/data/db
+
+volumes:
+  db_data:
+    driver: local

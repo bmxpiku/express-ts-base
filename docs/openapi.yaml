@@ -1,0 +1,46 @@
+openapi: 3.0.1
+info:
+  title: Template Service
+  description: 'description'
+  version: 0.1.0
+servers:
+  - url: https://template.com
+
+paths:
+  /user/create:
+    post:
+      tags:
+        - user
+      summary: Create something
+      operationId: create
+      security:
+        - OAuth2: [ ]
+        required: true
+      responses:
+        200:
+          type: string
+          example: 'string_response'
+          description: description of response.
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        email:
+          type: string
+          default: ''
+        firstname:
+          type: string
+        lastname:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+      example:
+        email: bmxpiku@piku
+        firstname: Piku
+        lastname: rockstar
+        username: piku
+        password: somehow_strong_not-intuitive_password-maybe_hackable
