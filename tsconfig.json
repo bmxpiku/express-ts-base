@@ -17,11 +17,13 @@
     "target": "es6",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
+    "useUnknownInCatchVariables": false,
     "paths": {
       "@src/*": [
         "src/*"
       ],
-    }
+    },
+    "skipLibCheck": true
   },
   "include": [
     "src/**/*.ts",

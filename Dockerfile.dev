@@ -1,4 +1,4 @@
-FROM node:lts-alpine
+FROM node:16-alpine
 
 ARG NPM_TOKEN
 ENV NPM_TOKEN=$NPM_TOKEN
@@ -7,6 +7,9 @@ RUN apk update && apk upgrade && \
     apk add --no-cache bash git openssh python make g++ libexecinfo-dev
 WORKDIR /server
 COPY . /server
+
+# bump npm version
+RUN npm i -g npm@8.3
 
 RUN npm ci
 RUN npm run build

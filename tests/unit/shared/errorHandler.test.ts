@@ -15,7 +15,7 @@ describe('errorHandler', () => {
             { context: { key: 'test' }, message: 't3st' } as ValidationErrorItem,
           ],
         },
-      } as ExpressJoiError;
+      } as unknown as ExpressJoiError;
       const JoiIsErrorMock = jest.spyOn(Joi, 'isError').mockReturnValueOnce(true);
       const loggerDebugMock = jest.spyOn(logger, 'debug');
       const responseJsonMock = jest.fn();
@@ -28,6 +28,8 @@ describe('errorHandler', () => {
       validationErrorHandler(error, requestMock, responseMock, nextFunctionMock);
 
       // then
+      // An interface can only extend an object type or intersection of object types with statically known members
+      // @ts-ignore
       expect(JoiIsErrorMock).toHaveBeenCalledWith(error.error);
       expect(loggerDebugMock).toHaveBeenCalledWith(error);
       expect(responseStatusMock).toHaveBeenCalledWith(StatusCodes.BAD_REQUEST);

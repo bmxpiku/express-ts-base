@@ -1,14 +1,16 @@
 #################
 # Builder image #
 #################
-FROM node:lts-alpine AS build
+FROM node:16-alpine AS build
 
 WORKDIR /code
 ARG NPM_TOKEN
 ENV NPM_TOKEN=$NPM_TOKEN
 COPY . .
 RUN apk update && apk upgrade && \
-    apk add --no-cache python make g++ libexecinfo-dev
+    apk add --no-cache python3 make g++ libexecinfo-dev \
+# bump npm version
+RUN npm i -g npm@8.3
 RUN npm ci
 ENV NODE_ENV=production
 RUN npm run build
@@ -17,7 +19,7 @@ RUN npm ci --only=production
 ####################
 # Production image #
 ####################
-FROM node:lts-alpine AS production
+FROM node:16-alpine AS production
 
 RUN apk add dumb-init python
 

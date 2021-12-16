@@ -21,15 +21,14 @@ if (MONGODB_HOST === undefined || MONGODB_HOST.length === 0) {
 
 const replicaOpts =
     MONGODB_REPLICA_SET ? { replicaSet: 'rs0', readPreference: ReadPreference.SECONDARY_PREFERRED } : {};
+const ca = fs.readFileSync('rds-combined-ca-bundle.pem');
 const sslOpts = MONGODB_SSL ? {
   ssl: true,
   sslValidate: true,
-  sslCA: [fs.readFileSync('rds-combined-ca-bundle.pem')],
+  sslCA: ca.toString(),
 } : {};
 
 const dbOptions: MongoClientOptions = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
   ignoreUndefined: true,
   ...sslOpts,
   ...replicaOpts,

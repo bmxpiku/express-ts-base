@@ -6,10 +6,6 @@ import logger from '@src/logger/Logger';
 const db = mongoose.connection;
 
 const opts : ConnectOptions = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-  useCreateIndex: true,
   ignoreUndefined: true,
 };
 
@@ -43,9 +39,9 @@ if (MONGODB_REPLSET && MONGODB_REPLSET.length > 0) {
   opts.readPreference = 'secondaryPreferred';
 }
 if (MONGODB_SSL && MONGODB_SSL.length > 0) {
-  const ca = [fs.readFileSync('rds-combined-ca-bundle.pem')];
+  const ca = fs.readFileSync('rds-combined-ca-bundle.pem');
   opts.sslValidate = true;
-  opts.sslCA = ca;
+  opts.sslCA = ca.toString();
 }
 db.on('error', console.error.bind(console, 'Connection error :'));
 

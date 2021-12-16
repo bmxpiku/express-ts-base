@@ -7,6 +7,8 @@ import Joi from 'joi';
 import logger from '@src/logger/Logger';
 
 export function validationErrorHandler(err: ExpressJoiError, req: Request, res: Response, next: NextFunction): void {
+  // An interface can only extend an object type or intersection of object types with statically known members
+  // @ts-ignore
   const { error } = err;
   if (Joi.isError(error)) {
     const errors = error.details.map((item) => ({
