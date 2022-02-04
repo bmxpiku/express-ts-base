@@ -8,6 +8,7 @@ import corsOptions from '@src/config/cors';
 import { errorHandlers } from '@src/shared/errorHandler';
 import BaseRouter from '@src/routes/BaseRouter';
 import { connect as dbConnect } from '@src/clients/mongooseClient';
+import { StatusCodes } from 'http-status-codes';
 
 const app = express();
 
@@ -32,6 +33,10 @@ app.use(cors(corsOptions));
 app.use('/', BaseRouter);
 
 app.use(...errorHandlers);
+
+app.use((req, res) => {
+  res.status(StatusCodes.NOT_FOUND).json({});
+});
 
 /** **********************************************************************************************
  *             Async start of application making sure that components are loaded

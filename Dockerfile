@@ -10,7 +10,7 @@ COPY . .
 RUN apk update && apk upgrade && \
     apk add --no-cache python3 make g++ libexecinfo-dev \
 # bump npm version
-RUN npm i -g npm@8.3
+RUN npm i -g npm@8.4
 RUN npm ci
 ENV NODE_ENV=production
 RUN npm run build

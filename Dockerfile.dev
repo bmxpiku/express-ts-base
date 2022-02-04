@@ -9,7 +9,7 @@ WORKDIR /server
 COPY . /server
 
 # bump npm version
-RUN npm i -g npm@8.3
+RUN npm i -g npm@8.4
 
 RUN npm ci
 RUN npm run build
