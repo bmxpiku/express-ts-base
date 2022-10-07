@@ -6,7 +6,7 @@ module.exports = {
     '<rootDir>/jest.setup.ts',
   ],
   transform: {
-    '^.+\\.(ts|js)?$': 'babel-jest',
+    '^.+\\.(ts|js)?$': 'ts-jest',
   },
   moduleNameMapper: {
     '@src/(.*)': '<rootDir>/src/$1',

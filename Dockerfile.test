@@ -1,7 +1,7 @@
-FROM node:lts-alpine
+FROM node:18-alpine
 
 RUN apk update && apk upgrade && \
-    apk add --no-cache python make g++ libexecinfo-dev
+apk add --no-cache python3 make g++ libexecinfo-dev
 WORKDIR /code
 ARG NPM_TOKEN
 ENV NPM_TOKEN=$NPM_TOKEN

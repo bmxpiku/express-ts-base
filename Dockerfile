@@ -1,7 +1,7 @@
 #################
 # Builder image #
 #################
-FROM node:16-alpine AS build
+FROM node:18-alpine AS build
 
 WORKDIR /code
 ARG NPM_TOKEN
@@ -19,7 +19,7 @@ RUN npm ci --only=production
 ####################
 # Production image #
 ####################
-FROM node:16-alpine AS production
+FROM node:18-alpine AS production
 
 RUN apk add dumb-init python
 
